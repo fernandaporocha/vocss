@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-05 13:00+0000\n"
+"POT-Creation-Date: 2021-03-10 20:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,43 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\userProfile\admin.py:15
+msgid "Contact information"
+msgstr "Contact Information"
+
+#: .\userProfile\admin.py:18
+msgid "Addr"
+msgstr "Address"
+
+#: .\userProfile\admin.py:22 .\userProfile\admin.py:23
+msgid "profile"
+msgstr "profile"
+
+#: .\userProfile\admin.py:40 .\userProfile\models.py:9
+msgid "dob"
+msgstr "data of birth"
+
+#: .\userProfile\admin.py:44 .\userProfile\models.py:10
+msgid "phone"
+msgstr "phone"
+
+#: .\userProfile\admin.py:48 .\userProfile\models.py:11
+msgid "mobile"
+msgstr "mobile"
+
+#: .\userProfile\admin.py:52 .\userProfile\models.py:13
+msgid "address"
+msgstr "address"
+
+#: .\userProfile\admin.py:56 .\userProfile\models.py:14
+msgid "city"
+msgstr "city"
+
+#: .\userProfile\admin.py:60 .\userProfile\models.py:15
+msgid "state"
+msgstr "state"
+
 #: .\userProfile\models.py:7 .\userProfile\models.py:18
 msgid "user"
 msgstr "user"
@@ -25,33 +62,9 @@ msgstr "user"
 msgid "name"
 msgstr "name"
 
-#: .\userProfile\models.py:9
-msgid "dob"
-msgstr "data of birth"
-
-#: .\userProfile\models.py:10
-msgid "phone"
-msgstr "phone"
-
-#: .\userProfile\models.py:11
-msgid "mobile"
-msgstr "mobile"
-
 #: .\userProfile\models.py:12
 msgid "email"
 msgstr "email"
-
-#: .\userProfile\models.py:13
-msgid "address"
-msgstr "address"
-
-#: .\userProfile\models.py:14
-msgid "city"
-msgstr "city"
-
-#: .\userProfile\models.py:15
-msgid "state"
-msgstr "state"
 
 #: .\userProfile\models.py:19
 msgid "users"
