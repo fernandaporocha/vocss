@@ -29,6 +29,10 @@ class UserProfileAdmin(UserAdmin):
         }),
     )
     list_display=('dob', 'phone', 'mobile', 'email', 'address', 'city', 'state')
+    class Media:
+        css = {
+            'all': ('css/userprofile_no_heading.css', )     # Include extra css
+        }
     inlines = (UserProfileInline,)
 
     def dob (self, instance):
