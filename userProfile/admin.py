@@ -1,10 +1,13 @@
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
+from django import forms
 from django.contrib.auth.admin import UserAdmin
 from .models import UserProfile
 from django.contrib.auth.models import User
-
+from django.contrib.auth.forms import (
+  UserCreationForm,
+)
 class UserProfileInline (admin.StackedInline):
     model = UserProfile
     max_num = 1
@@ -13,7 +16,7 @@ class UserProfileInline (admin.StackedInline):
             'fields': ('nome', 'dob')
         }),
         (_('Contact information'), {
-            'fields': ('email', 'phone', 'mobile')
+            'fields': ('phone', 'mobile')
         }),
         (_('Addr'), {
             'fields': ('address', 'city', 'state')
@@ -22,18 +25,50 @@ class UserProfileInline (admin.StackedInline):
     verbose_name = _('profile')
     verbose_name_plural = _('profile')
 
+class UsernameField(forms.CharField):
+    def to_python(self, value):
+        return unicodedata.normalize('NFKC', super().to_python(value))
+
+    def widget_attrs(self, widget):
+        return {
+            **super().widget_attrs(widget),
+            'autocapitalize': 'none',
+            'autocomplete': 'username',
+        }
+
+class CustomUserCreationForm(UserCreationForm):
+    """
+    A form that creates a user, with no privileges, from the given username and
+    password.
+    """
+    class Meta:
+        model = User
+        #fields = ("username", "email")
+        fields = '__all__'
+        field_classes = {'username': UsernameField}
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+
 class UserProfileAdmin(UserAdmin):
     fieldsets = (
         (None, {
-            'fields': ('username', 'first_name', 'last_name', 'password', 'is_active', 'groups')
+            'fields': ('username', 'password', 'is_active', 'groups')
         }),
     )
-    list_display=('dob', 'phone', 'mobile', 'email', 'address', 'city', 'state')
+    list_display=('username', 'name', 'phone', 'mobile')
+    add_form = CustomUserCreationForm
+    
     class Media:
         css = {
             'all': ('css/userprofile_no_heading.css', )     # Include extra css
         }
     inlines = (UserProfileInline,)
+
+    def name (self, instance):
+        return instance.profile.nome
+    name.short_description = _("name")
 
     def dob (self, instance):
         return instance.profile.dob
@@ -46,20 +81,6 @@ class UserProfileAdmin(UserAdmin):
     def mobile (self, instance):
         return instance.profile.mobile
     mobile.short_description = _("mobile")
-
-    def address (self, instance):
-        return instance.profile.address
-    address.short_description = _("address")
-
-    def city (self, instance):
-        return instance.profile.city
-    city.short_description = _("city")
-
-    def state (self, instance):
-        return instance.profile.state
-    state.short_description = _("state")
-    
-
 
 # Register your models here.
 admin.site.unregister (User)
