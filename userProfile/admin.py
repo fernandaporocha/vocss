@@ -13,10 +13,7 @@ class UserProfileInline (admin.StackedInline):
     max_num = 1
     fieldsets = (
         (None, {
-            'fields': ('nome', 'dob')
-        }),
-        (_('Contact information'), {
-            'fields': ('phone', 'mobile')
+            'fields': ('name', 'dob', 'phone', 'mobile')
         }),
         (_('Addr'), {
             'fields': ('address', 'city', 'state')
@@ -25,40 +22,21 @@ class UserProfileInline (admin.StackedInline):
     verbose_name = _('profile')
     verbose_name_plural = _('profile')
 
-class UsernameField(forms.CharField):
-    def to_python(self, value):
-        return unicodedata.normalize('NFKC', super().to_python(value))
-
-    def widget_attrs(self, widget):
-        return {
-            **super().widget_attrs(widget),
-            'autocapitalize': 'none',
-            'autocomplete': 'username',
-        }
-
-class CustomUserCreationForm(UserCreationForm):
-    """
-    A form that creates a user, with no privileges, from the given username and
-    password.
-    """
-    class Meta:
-        model = User
-        #fields = ("username", "email")
-        fields = '__all__'
-        field_classes = {'username': UsernameField}
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-
 class UserProfileAdmin(UserAdmin):
     fieldsets = (
         (None, {
             'fields': ('username', 'password', 'is_active', 'groups')
         }),
     )
-    list_display=('username', 'name', 'phone', 'mobile')
-    add_form = CustomUserCreationForm
+    add_fieldsets = (
+        (None, {
+            'classes': ('wide',),
+            'fields': ('username', 'password1', 'password2', 'email', 'groups'),
+        }),
+    )
+    list_display=('username', 'name', 'phone', 'mobile', 'email')
+    list_filter = ('is_active',)
+
     
     class Media:
         css = {
@@ -67,7 +45,7 @@ class UserProfileAdmin(UserAdmin):
     inlines = (UserProfileInline,)
 
     def name (self, instance):
-        return instance.profile.nome
+        return instance.profile.name
     name.short_description = _("name")
 
     def dob (self, instance):
