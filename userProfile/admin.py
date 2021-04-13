@@ -4,23 +4,48 @@ from django.utils.translation import ugettext_lazy as _
 from django import forms
 from django.contrib.auth.admin import UserAdmin
 from .models import UserProfile
+from .models import ExtraFieldData
+from vocssapp.models import Document
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import (
   UserCreationForm,
 )
+
+class ExtraFieldInline (admin.TabularInline):
+    model = ExtraFieldData
+    extra = 0
+    verbose_name = _('extra field data')
+    verbose_name_plural = _('extra fields data')
+    #form = ExtraFieldAdminForm
+
+class DocumentInline (admin.TabularInline):
+    model = Document
+    fieldsets = (
+        (None, {
+            'fields': ('name', 'file')
+        }),
+    )
+    verbose_name = _('document')
+    verbose_name_plural = _('documents')
+
 class UserProfileInline (admin.StackedInline):
     model = UserProfile
     max_num = 1
     fieldsets = (
         (None, {
-            'fields': ('name', 'dob', 'phone', 'mobile')
+            'fields': ('name', 'dob', 'sex', 'ethinicity', 'phone', 'mobile')
         }),
         (_('Addr'), {
-            'fields': ('address', 'city', 'state')
+            'fields': ('address', 'county', 'city', 'state', 'postal_code')
+        }),
+        (_('attachment'), {
+            'fields': ('photo', 'rg', 'cpf', 'curriculum', 'documents')
         }),
     )
+    inlines = (ExtraFieldInline,)
     verbose_name = _('profile')
     verbose_name_plural = _('profile')
+    
 
 class UserProfileAdmin(UserAdmin):
     fieldsets = (
