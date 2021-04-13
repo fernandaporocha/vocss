@@ -108,3 +108,18 @@ class Responsible (models.Model):
     class Meta:
         verbose_name = _("responsible")
         verbose_name_plural = _("responsibles")
+
+
+class Class (models.Model):
+    name = models.CharField(_("name"), max_length=100, blank=False, null=False)
+    course = models.ForeignKey(Course, verbose_name=_("course"), on_delete=models.DO_NOTHING, null=True) 
+    teacher = models.ForeignKey('userProfile.UserProfile', verbose_name=_("teacher"), on_delete=models.DO_NOTHING, null=True) 
+    students = models.ManyToManyField(Student, verbose_name=_("students")) 
+    num_places = models.IntegerField (_('number of places'), default=10)
+    start_date = models.DateField(_("start date"), auto_now=False, blank=True, null=True)
+    end_date = models.DateField(_("end date"), auto_now=False, blank=True, null=True)
+    extra_information = models.CharField(_("name"), max_length=300, blank=True, null=True)
+
+    class Meta:
+        verbose_name = _("class")
+        verbose_name_plural = _("classes")

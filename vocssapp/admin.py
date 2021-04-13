@@ -54,7 +54,15 @@ class StudentAdmin(admin.ModelAdmin):
     verbose_name = _('student')
     verbose_name_plural = _('students')
 
+class ClassAdmin(admin.ModelAdmin):
+    fieldsets = (
+        (None, {
+            'fields': ('name', 'course', 'teacher', 'num_places', 'start_date', 'end_date', 'students')
+        }),
+    )
+
 # Register your models here.
 admin.site.register(Unity, UnityAdmin)
 admin.site.register(Course, CourseAdmin)
 admin.site.register(Student, StudentAdmin)
+admin.site.register(Class, ClassAdmin)
