@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 23:33+0100\n"
+"POT-Creation-Date: 2021-05-16 10:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,45 +18,45 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\vocssapp\admin.py:25
+#: .\vocssapp\admin.py:27
 msgid "socio economic information"
 msgstr ""
 
-#: .\vocssapp\admin.py:31 .\vocssapp\models.py:9 .\vocssapp\models.py:117
+#: .\vocssapp\admin.py:33 .\vocssapp\models.py:9 .\vocssapp\models.py:109
 msgid "responsible"
 msgstr ""
 
-#: .\vocssapp\admin.py:32 .\vocssapp\models.py:118
+#: .\vocssapp\admin.py:34 .\vocssapp\models.py:110
 msgid "responsibles"
 msgstr ""
 
-#: .\vocssapp\admin.py:36
+#: .\vocssapp\admin.py:38
 msgid "student information"
 msgstr ""
 
-#: .\vocssapp\admin.py:39
+#: .\vocssapp\admin.py:41
 msgid "student address"
 msgstr ""
 
-#: .\vocssapp\admin.py:42
+#: .\vocssapp\admin.py:44
 msgid "school information"
 msgstr ""
 
-#: .\vocssapp\admin.py:45
+#: .\vocssapp\admin.py:47
 msgid "additional  information"
 msgstr ""
 
-#: .\vocssapp\admin.py:54 .\vocssapp\models.py:86 .\vocssapp\models.py:105
+#: .\vocssapp\admin.py:56 .\vocssapp\models.py:78 .\vocssapp\models.py:97
+#: .\vocssapp\models.py:160
 msgid "student"
 msgstr ""
 
-#: .\vocssapp\admin.py:55 .\vocssapp\models.py:87 .\vocssapp\models.py:125
+#: .\vocssapp\admin.py:57 .\vocssapp\models.py:79 .\vocssapp\models.py:117
 msgid "students"
 msgstr ""
 
-#: .\vocssapp\models.py:8 .\vocssapp\models.py:22 .\vocssapp\models.py:33
-#: .\vocssapp\models.py:52 .\vocssapp\models.py:92 .\vocssapp\models.py:122
-#: .\vocssapp\models.py:129
+#: .\vocssapp\models.py:8 .\vocssapp\models.py:22 .\vocssapp\models.py:44
+#: .\vocssapp\models.py:84 .\vocssapp\models.py:114
 msgid "name"
 msgstr ""
 
@@ -64,19 +64,19 @@ msgstr ""
 msgid "phone"
 msgstr ""
 
-#: .\vocssapp\models.py:11 .\vocssapp\models.py:98
+#: .\vocssapp\models.py:11 .\vocssapp\models.py:90
 msgid "email"
 msgstr ""
 
-#: .\vocssapp\models.py:12 .\vocssapp\models.py:67 .\vocssapp\models.py:100
+#: .\vocssapp\models.py:12 .\vocssapp\models.py:59 .\vocssapp\models.py:92
 msgid "address"
 msgstr ""
 
-#: .\vocssapp\models.py:13 .\vocssapp\models.py:69 .\vocssapp\models.py:101
+#: .\vocssapp\models.py:13 .\vocssapp\models.py:61 .\vocssapp\models.py:93
 msgid "city"
 msgstr ""
 
-#: .\vocssapp\models.py:14 .\vocssapp\models.py:70 .\vocssapp\models.py:102
+#: .\vocssapp\models.py:14 .\vocssapp\models.py:62 .\vocssapp\models.py:94
 msgid "state"
 msgstr ""
 
@@ -92,7 +92,7 @@ msgstr ""
 msgid "unities"
 msgstr ""
 
-#: .\vocssapp\models.py:29 .\vocssapp\models.py:123
+#: .\vocssapp\models.py:29 .\vocssapp\models.py:115
 msgid "course"
 msgstr ""
 
@@ -100,368 +100,404 @@ msgstr ""
 msgid "courses"
 msgstr ""
 
-#: .\vocssapp\models.py:34
-msgid "file"
-msgstr ""
-
 #: .\vocssapp\models.py:37
-msgid "document"
-msgstr ""
-
-#: .\vocssapp\models.py:38
-msgid "documents"
-msgstr ""
-
-#: .\vocssapp\models.py:45
 msgid "Male"
 msgstr ""
 
-#: .\vocssapp\models.py:45
+#: .\vocssapp\models.py:37
 msgid "Female"
 msgstr ""
 
-#: .\vocssapp\models.py:46
+#: .\vocssapp\models.py:38
 msgid "White"
 msgstr ""
 
-#: .\vocssapp\models.py:46
+#: .\vocssapp\models.py:38
 msgid "Black"
 msgstr ""
 
-#: .\vocssapp\models.py:46
+#: .\vocssapp\models.py:38
 msgid "hispanic"
 msgstr ""
 
-#: .\vocssapp\models.py:46
+#: .\vocssapp\models.py:38
 msgid "asian"
 msgstr ""
 
-#: .\vocssapp\models.py:46
+#: .\vocssapp\models.py:38
 msgid "indian"
 msgstr ""
 
-#: .\vocssapp\models.py:46
+#: .\vocssapp\models.py:38
 msgid "non declared"
 msgstr ""
 
-#: .\vocssapp\models.py:47 .\vocssapp\models.py:48
+#: .\vocssapp\models.py:39 .\vocssapp\models.py:40
 msgid "Morning"
 msgstr ""
 
-#: .\vocssapp\models.py:47 .\vocssapp\models.py:48
+#: .\vocssapp\models.py:39 .\vocssapp\models.py:40
 msgid "afternoon"
 msgstr ""
 
-#: .\vocssapp\models.py:47 .\vocssapp\models.py:48
+#: .\vocssapp\models.py:39 .\vocssapp\models.py:40
 msgid "evening"
 msgstr ""
 
-#: .\vocssapp\models.py:47
+#: .\vocssapp\models.py:39
 msgid "fulltime"
 msgstr ""
 
-#: .\vocssapp\models.py:49
+#: .\vocssapp\models.py:41
 msgid "berçário 1"
 msgstr ""
 
-#: .\vocssapp\models.py:49
+#: .\vocssapp\models.py:41
 msgid "berçário 2"
 msgstr ""
 
-#: .\vocssapp\models.py:49
+#: .\vocssapp\models.py:41
 msgid "maternal 1"
 msgstr ""
 
-#: .\vocssapp\models.py:49
+#: .\vocssapp\models.py:41
 msgid "pré-escola 1"
 msgstr ""
 
-#: .\vocssapp\models.py:49
+#: .\vocssapp\models.py:41
 msgid "pré-escola 2"
 msgstr ""
 
-#: .\vocssapp\models.py:49
+#: .\vocssapp\models.py:41
 msgid "1º Ano (Fundamental)"
 msgstr ""
 
-#: .\vocssapp\models.py:49
+#: .\vocssapp\models.py:41
 msgid "2º Ano (Fundamental)"
 msgstr ""
 
-#: .\vocssapp\models.py:49
+#: .\vocssapp\models.py:41
 msgid "3º Ano (Fundamental)"
 msgstr ""
 
-#: .\vocssapp\models.py:49
+#: .\vocssapp\models.py:41
 msgid "4º Ano (Fundamental)"
 msgstr ""
 
-#: .\vocssapp\models.py:49
+#: .\vocssapp\models.py:41
 msgid "5º Ano (Fundamental)"
 msgstr ""
 
-#: .\vocssapp\models.py:49
+#: .\vocssapp\models.py:41
 msgid "6º Ano (Fundamental)"
 msgstr ""
 
-#: .\vocssapp\models.py:49
+#: .\vocssapp\models.py:41
 msgid "7º Ano (Fundamental)"
 msgstr ""
 
-#: .\vocssapp\models.py:49
+#: .\vocssapp\models.py:41
 msgid "8º Ano (Fundamental)"
 msgstr ""
 
-#: .\vocssapp\models.py:49
+#: .\vocssapp\models.py:41
 msgid "9º Ano (Fundamental)"
 msgstr ""
 
-#: .\vocssapp\models.py:49
+#: .\vocssapp\models.py:41
 msgid "1º Ano (Médio)"
 msgstr ""
 
-#: .\vocssapp\models.py:49
+#: .\vocssapp\models.py:41
 msgid "2º Ano (Médio)"
 msgstr ""
 
-#: .\vocssapp\models.py:49
+#: .\vocssapp\models.py:41
 msgid "3º Ano Médio"
 msgstr ""
 
-#: .\vocssapp\models.py:51
+#: .\vocssapp\models.py:43
 msgid "year"
 msgstr ""
 
-#: .\vocssapp\models.py:53
+#: .\vocssapp\models.py:45
 msgid "shortname"
 msgstr ""
 
-#: .\vocssapp\models.py:54 .\vocssapp\models.py:97
+#: .\vocssapp\models.py:46 .\vocssapp\models.py:89
 msgid "mobile"
 msgstr ""
 
-#: .\vocssapp\models.py:55
+#: .\vocssapp\models.py:47
 msgid "sex"
 msgstr ""
 
-#: .\vocssapp\models.py:56
+#: .\vocssapp\models.py:48
 msgid "ethinicity"
 msgstr ""
 
-#: .\vocssapp\models.py:57 .\vocssapp\models.py:94
+#: .\vocssapp\models.py:49 .\vocssapp\models.py:86
 msgid "dob"
 msgstr ""
 
-#: .\vocssapp\models.py:58
+#: .\vocssapp\models.py:50
 msgid "state of orign"
 msgstr ""
 
-#: .\vocssapp\models.py:59
+#: .\vocssapp\models.py:51
 msgid "city of orign"
 msgstr ""
 
-#: .\vocssapp\models.py:60 .\vocssapp\models.py:95
+#: .\vocssapp\models.py:52 .\vocssapp\models.py:87
 msgid "cpf"
 msgstr ""
 
-#: .\vocssapp\models.py:61 .\vocssapp\models.py:96
+#: .\vocssapp\models.py:53 .\vocssapp\models.py:88
 msgid "rg"
 msgstr ""
 
-#: .\vocssapp\models.py:62
+#: .\vocssapp\models.py:54
 msgid "issuing body"
 msgstr ""
 
-#: .\vocssapp\models.py:63
+#: .\vocssapp\models.py:55
 msgid "birth certificate"
 msgstr ""
 
-#: .\vocssapp\models.py:64
+#: .\vocssapp\models.py:56
 msgid "book"
 msgstr ""
 
-#: .\vocssapp\models.py:65
+#: .\vocssapp\models.py:57
 msgid "page"
 msgstr ""
 
-#: .\vocssapp\models.py:66
+#: .\vocssapp\models.py:58
 msgid "photo"
 msgstr ""
 
-#: .\vocssapp\models.py:68
+#: .\vocssapp\models.py:60
 msgid "county"
 msgstr ""
 
-#: .\vocssapp\models.py:71 .\vocssapp\models.py:103
+#: .\vocssapp\models.py:63 .\vocssapp\models.py:95
 msgid "postal code"
 msgstr ""
 
-#: .\vocssapp\models.py:72
+#: .\vocssapp\models.py:64
 msgid "school name"
 msgstr ""
 
-#: .\vocssapp\models.py:73
+#: .\vocssapp\models.py:65
 msgid "study period"
 msgstr ""
 
-#: .\vocssapp\models.py:74
+#: .\vocssapp\models.py:66
 msgid "currently year"
 msgstr ""
 
-#: .\vocssapp\models.py:75
+#: .\vocssapp\models.py:67
 msgid "does the student do other courses?"
 msgstr ""
 
-#: .\vocssapp\models.py:76
+#: .\vocssapp\models.py:68
 msgid "which courses?"
 msgstr ""
 
-#: .\vocssapp\models.py:77
+#: .\vocssapp\models.py:69
 msgid "does the student have any special need?"
 msgstr ""
 
-#: .\vocssapp\models.py:78
+#: .\vocssapp\models.py:70
 msgid "top size"
 msgstr ""
 
-#: .\vocssapp\models.py:79
+#: .\vocssapp\models.py:71
 msgid "bottom size"
 msgstr ""
 
-#: .\vocssapp\models.py:80
+#: .\vocssapp\models.py:72
 msgid "shoes size"
 msgstr ""
 
-#: .\vocssapp\models.py:91
+#: .\vocssapp\models.py:83
 msgid "Father"
 msgstr ""
 
-#: .\vocssapp\models.py:91
+#: .\vocssapp\models.py:83
 msgid "Mother"
 msgstr ""
 
-#: .\vocssapp\models.py:91
+#: .\vocssapp\models.py:83
 msgid "Uncle/Aunt"
 msgstr ""
 
-#: .\vocssapp\models.py:91
+#: .\vocssapp\models.py:83
 msgid "Grandfather/Grandmother"
 msgstr ""
 
-#: .\vocssapp\models.py:91
+#: .\vocssapp\models.py:83
 msgid "Other"
 msgstr ""
 
-#: .\vocssapp\models.py:93
+#: .\vocssapp\models.py:85
 msgid "degree od relationship"
 msgstr ""
 
-#: .\vocssapp\models.py:99
+#: .\vocssapp\models.py:91
 msgid "Live with the student?"
 msgstr ""
 
-#: .\vocssapp\models.py:104
+#: .\vocssapp\models.py:96
 msgid "curriculum"
 msgstr ""
 
-#: .\vocssapp\models.py:106
+#: .\vocssapp\models.py:98
 msgid "Fundamental Incompleto"
 msgstr ""
 
-#: .\vocssapp\models.py:106
+#: .\vocssapp\models.py:98
 msgid "Fundamental Completo"
 msgstr ""
 
-#: .\vocssapp\models.py:106
+#: .\vocssapp\models.py:98
 msgid "Médio Incompleto"
 msgstr ""
 
-#: .\vocssapp\models.py:106
+#: .\vocssapp\models.py:98
 msgid "Médio Completo"
 msgstr ""
 
-#: .\vocssapp\models.py:106
+#: .\vocssapp\models.py:98
 msgid "Superior Incompleto"
 msgstr ""
 
-#: .\vocssapp\models.py:106
+#: .\vocssapp\models.py:98
 msgid "Superior Completo"
 msgstr ""
 
-#: .\vocssapp\models.py:106
+#: .\vocssapp\models.py:98
 msgid "Pós Graduação Incompleta"
 msgstr ""
 
-#: .\vocssapp\models.py:106
+#: .\vocssapp\models.py:98
 msgid "Pós Graduação Completa"
 msgstr ""
 
-#: .\vocssapp\models.py:107
+#: .\vocssapp\models.py:99
 msgid "Até 1 salário mínimo (até R$1.100,00)"
 msgstr ""
 
-#: .\vocssapp\models.py:107
+#: .\vocssapp\models.py:99
 msgid "Até 2 salários mínimos (de R$1.100,01 a R$2.200,00)"
 msgstr ""
 
-#: .\vocssapp\models.py:107
+#: .\vocssapp\models.py:99
 msgid "Até 3 salários mínimos (de R$2.200,01 a R$3.300,00)"
 msgstr ""
 
-#: .\vocssapp\models.py:107
+#: .\vocssapp\models.py:99
 msgid "Mais de 3 salários mínimos"
 msgstr ""
 
-#: .\vocssapp\models.py:108
+#: .\vocssapp\models.py:100
 msgid "education level"
 msgstr ""
 
-#: .\vocssapp\models.py:109
+#: .\vocssapp\models.py:101
 msgid "is currently working?"
 msgstr ""
 
-#: .\vocssapp\models.py:110
+#: .\vocssapp\models.py:102
 msgid "profession"
 msgstr ""
 
-#: .\vocssapp\models.py:111
+#: .\vocssapp\models.py:103
 msgid "family income"
 msgstr ""
 
-#: .\vocssapp\models.py:112
+#: .\vocssapp\models.py:104
 msgid "does the student help with the family income?"
 msgstr ""
 
-#: .\vocssapp\models.py:113
+#: .\vocssapp\models.py:105
 msgid "does the family receive any government benefit?"
 msgstr ""
 
-#: .\vocssapp\models.py:114
+#: .\vocssapp\models.py:106
 msgid "received benefits"
 msgstr ""
 
-#: .\vocssapp\models.py:124
+#: .\vocssapp\models.py:116
 msgid "teacher"
 msgstr ""
 
-#: .\vocssapp\models.py:126
+#: .\vocssapp\models.py:118
 msgid "number of places"
 msgstr ""
 
-#: .\vocssapp\models.py:127
+#: .\vocssapp\models.py:119
 msgid "start date"
 msgstr ""
 
-#: .\vocssapp\models.py:128
+#: .\vocssapp\models.py:120
 msgid "end date"
 msgstr ""
 
-#: .\vocssapp\models.py:132
+#: .\vocssapp\models.py:121
+msgid "start time"
+msgstr ""
+
+#: .\vocssapp\models.py:122
+msgid "end time"
+msgstr ""
+
+#: .\vocssapp\models.py:123 .\vocssapp\models.py:161
+msgid "observation"
+msgstr ""
+
+#: .\vocssapp\models.py:130 .\vocssapp\models.py:134
 msgid "class"
 msgstr ""
 
-#: .\vocssapp\models.py:133
+#: .\vocssapp\models.py:131
 msgid "classes"
+msgstr ""
+
+#: .\vocssapp\models.py:135
+msgid "date"
+msgstr ""
+
+#: .\vocssapp\models.py:154 .\vocssapp\models.py:162
+msgid "lesson"
+msgstr ""
+
+#: .\vocssapp\models.py:155
+msgid "lessons"
+msgstr ""
+
+#: .\vocssapp\models.py:158
+msgid "present"
+msgstr ""
+
+#: .\vocssapp\models.py:158
+msgid "absent"
+msgstr ""
+
+#: .\vocssapp\models.py:158
+msgid "justified absent"
+msgstr ""
+
+#: .\vocssapp\models.py:159
+msgid "status"
+msgstr ""
+
+#: .\vocssapp\models.py:168
+msgid "attendance"
+msgstr ""
+
+#: .\vocssapp\models.py:169
+msgid "attendances"
 msgstr ""
 
 #~ msgid "responsible information"
