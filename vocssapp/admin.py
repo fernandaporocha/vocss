@@ -1,6 +1,8 @@
 from django.contrib import admin
-from .models import Unity, Course, Responsible, Student, Class
+from .models import Unity, Course, Responsible, Student, Klass, Lesson, StudentAttendance
 
+from django.forms import ModelForm
+from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
 class UnityAdmin(admin.ModelAdmin):
@@ -54,15 +56,37 @@ class StudentAdmin(admin.ModelAdmin):
     verbose_name = _('student')
     verbose_name_plural = _('students')
 
-class ClassAdmin(admin.ModelAdmin):
+class KlassAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
-            'fields': ('name', 'course', 'teacher', 'num_places', 'start_date', 'end_date', 'students')
+            'fields': ('name', 'course', 'teacher', 'num_places', 'start_date', 'end_date','start_time', 'end_time', 'students', 'extra_information')
         }),
     )
+
+class StudentAttendanceInline (admin.TabularInline):
+    fieldsets = (
+        (None, {
+            'fields': ('student', 'status', 'observation')
+        }),
+    )
+    model = StudentAttendance
+    max_num = 0
+    can_delete = False
+
+    readonly_fields = ['student', ]
+
+
+class LessonAdmin(admin.ModelAdmin):
+    fieldsets = (
+        (None, {
+            'fields': ('klass', 'date')
+        }),
+    )
+    inlines = (StudentAttendanceInline,)
 
 # Register your models here.
 admin.site.register(Unity, UnityAdmin)
 admin.site.register(Course, CourseAdmin)
 admin.site.register(Student, StudentAdmin)
-admin.site.register(Class, ClassAdmin)
+admin.site.register(Klass, KlassAdmin)
+admin.site.register(Lesson, LessonAdmin)

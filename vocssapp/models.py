@@ -110,16 +110,60 @@ class Responsible (models.Model):
         verbose_name_plural = _("responsibles")
 
 
-class Class (models.Model):
+class Klass (models.Model):
     name = models.CharField(_("name"), max_length=100, blank=False, null=False)
     course = models.ForeignKey(Course, verbose_name=_("course"), on_delete=models.DO_NOTHING, null=True) 
-    teacher = models.ForeignKey('userProfile.UserProfile', verbose_name=_("teacher"), on_delete=models.DO_NOTHING, null=True) 
+    teacher = models.ForeignKey('auth.User', verbose_name=_("teacher"), on_delete=models.DO_NOTHING, null=True) 
     students = models.ManyToManyField(Student, verbose_name=_("students")) 
     num_places = models.IntegerField (_('number of places'), default=10)
     start_date = models.DateField(_("start date"), auto_now=False, blank=True, null=True)
     end_date = models.DateField(_("end date"), auto_now=False, blank=True, null=True)
-    extra_information = models.CharField(_("name"), max_length=300, blank=True, null=True)
+    start_time = models.TimeField(_("start time"), auto_now=False, blank=True, null=True)
+    end_time = models.TimeField(_("end time"), auto_now=False, blank=True, null=True)
+    extra_information = models.CharField(_("observation"), max_length=300, blank=True, null=True)
+
+    def __str__ (self):
+        return self.name
+
 
     class Meta:
         verbose_name = _("class")
         verbose_name_plural = _("classes")
+
+class Lesson (models.Model):
+    klass = models.ForeignKey(Klass, verbose_name=_("class"), on_delete=models.DO_NOTHING, null=True) 
+    date = models.DateField(_("date"), auto_now=False, blank=True, null=True)
+    
+    def save(self, *args, **kwargs):
+        super(Lesson, self).save(*args, **kwargs)
+        print ('save')
+        students = Student.objects.filter(klass=self.klass)
+        print(students)
+        for student in students:
+            studentAttendance = StudentAttendance(student = student, lesson = self, status = 'p')
+            studentAttendance.save()
+            print('a')
+            print(student.name)
+        #students = klasss.objects.filter(student=klasss.students)
+    #sdate = self.date.strftime("%d %b %Y ")
+    def __str__ (self):
+        return self.klass.name + " - " + self.date.strftime("%d %b %Y ")
+
+    class Meta:
+        unique_together = ('klass', 'date')
+        verbose_name = _("lesson")
+        verbose_name_plural = _("lessons")
+
+class StudentAttendance (models.Model):
+    STATUS = (('p', _('present')), ('a', _('absent')), ('j', _('justified absent')))
+    status = models.CharField (_("status"), max_length=1, choices=STATUS, blank=True, null=False)
+    student = models.ForeignKey(Student, verbose_name=_("student"), on_delete=models.DO_NOTHING, null=True) 
+    observation = models.CharField(_("observation"), max_length=300, blank=True, null=True)
+    lesson = models.ForeignKey(Lesson, verbose_name=_("lesson"), on_delete=models.CASCADE, null=True) 
+
+    def __str__ (self):
+        return ""
+
+    class Meta:
+        verbose_name = _("attendance")
+        verbose_name_plural = _("attendances")
