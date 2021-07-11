@@ -1,5 +1,6 @@
 from django.db import models
 import datetime
+from django.db.models.fields.related import ForeignKey
 
 from django.utils.translation import ugettext_lazy as _
 
@@ -125,8 +126,8 @@ class Klass (models.Model):
     def __str__ (self):
         return self.name
 
-
     class Meta:
+        unique_together = ('name', 'course')
         verbose_name = _("class")
         verbose_name_plural = _("classes")
 
@@ -136,16 +137,10 @@ class Lesson (models.Model):
     
     def save(self, *args, **kwargs):
         super(Lesson, self).save(*args, **kwargs)
-        print ('save')
         students = Student.objects.filter(klass=self.klass)
-        print(students)
         for student in students:
             studentAttendance = StudentAttendance(student = student, lesson = self, status = 'p')
             studentAttendance.save()
-            print('a')
-            print(student.name)
-        #students = klasss.objects.filter(student=klasss.students)
-    #sdate = self.date.strftime("%d %b %Y ")
     def __str__ (self):
         return self.klass.name + " - " + self.date.strftime("%d %b %Y ")
 
@@ -167,3 +162,64 @@ class StudentAttendance (models.Model):
     class Meta:
         verbose_name = _("attendance")
         verbose_name_plural = _("attendances")
+
+class School (models.Model):
+    name = models.CharField(_("name"), max_length=100, blank=False, null=False)
+    
+    def __str__ (self):
+        return self.name
+
+    class Meta:    
+        verbose_name = _("school")
+        verbose_name_plural = _("schools")
+
+
+class FormalSchool (models.Model):
+    CURRENTLY_YEAR = (('b1', _('berçário 1')), ('b2', _('berçário 2')), ('m1', _('maternal 1')), ('p1', _('pré-escola 1')), ('p2', _('pré-escola 2')), ('f1', _('1º Ano (Fundamental)')), ('f2', _('2º Ano (Fundamental)')), ('f3', _('3º Ano (Fundamental)')), ('f4', _('4º Ano (Fundamental)')), ('f5', _('5º Ano (Fundamental)')), ('f6', _('6º Ano (Fundamental)')), ('f7', _('7º Ano (Fundamental)')), ('f8', _('8º Ano (Fundamental)')), ('f9', _('9º Ano (Fundamental)')), ('m1', _('1º Ano (Médio)')), ('m2', _('2º Ano (Médio)')), ('m3', _('3º Ano Médio')))
+    student = models.ForeignKey(Student, verbose_name=_("student"), on_delete=models.DO_NOTHING, null=True) 
+    school = models.ForeignKey(School, verbose_name=_("school"), on_delete=models.DO_NOTHING, null=True) 
+    currently_year = models.CharField (_("currently year"), max_length=2, choices=CURRENTLY_YEAR, blank=True, null=False)
+
+    def __str__ (self):
+        return self.student.name
+
+    class Meta:    
+        verbose_name = _("formal school")
+        verbose_name_plural = _("formal schools")
+
+
+class Subject (models.Model):
+    name = models.CharField(_("name"), max_length=100, blank=False, null=False)
+    
+    def __str__ (self):
+        return self.name
+
+    class Meta:    
+        verbose_name = _("subject")
+        verbose_name_plural = _("subjects")
+
+
+class Grade (models.Model):
+    formal_school = models.ForeignKey(FormalSchool, verbose_name=_("formal_school"), on_delete=models.DO_NOTHING, null=True)
+    subject = models.ForeignKey(Subject, verbose_name=_("subject"), on_delete=models.DO_NOTHING, null=True) 
+    first = models.CharField (_('first bimester'),  max_length=100, blank=True, null=True)
+    second = models.CharField (_('second bimester'), max_length=100, blank=True, null=True)
+    third = models.CharField (_('third bimester'), max_length=100, blank=True, null=True)
+    fourth = models.CharField (_('fourth bimester'), max_length=100, blank=True, null=True)
+    
+    class Meta:
+        unique_together = ('formal_school', 'subject')
+        verbose_name = _("grade")
+        verbose_name_plural = _("grades")
+
+
+class Absence (models.Model):
+    formal_school = models.ForeignKey(FormalSchool, verbose_name=_("formal_school"), on_delete=models.DO_NOTHING, null=True)
+    first = models.IntegerField (_('first bimester'),  default=0)
+    second = models.IntegerField (_('second bimester'), default=0)
+    third = models.IntegerField (_('third bimester'), default=0)
+    fourth = models.IntegerField (_('fourth bimester'), default=0)
+
+    class Meta:
+        verbose_name = _("absence")
+        verbose_name_plural = _("absence")

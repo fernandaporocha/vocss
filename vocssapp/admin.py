@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Unity, Course, Responsible, Student, Klass, Lesson, StudentAttendance
+from .models import Unity, Course, Responsible, Student, Klass, Lesson, StudentAttendance, Grade, FormalSchool, Absence, School, Subject
 
 from django.forms import ModelForm
 from django.contrib.auth.models import User
@@ -84,9 +84,54 @@ class LessonAdmin(admin.ModelAdmin):
     )
     inlines = (StudentAttendanceInline,)
 
+class GradeInline (admin.TabularInline):
+    fieldsets = (
+        (None, {
+             'fields': ('subject', 'first', 'second', 'third', 'fourth')
+        }),
+    )
+    model = Grade
+
+class AbsenceInline (admin.TabularInline):
+    fieldsets = (
+        (None, {
+             'fields': ('first', 'second', 'third', 'fourth')
+        }),
+    )
+    model = Absence
+    max_num = 1
+    can_delete = False
+
+class FormalSchoolAdmin (admin.ModelAdmin):
+    fieldsets = (
+        (None, {
+             'fields': ('student', 'school', 'currently_year')
+        }),
+    )
+    
+    list_display=('student', 'school', 'currently_year')
+    inlines = (GradeInline,AbsenceInline,)
+
+class SchoolAdmin (admin.ModelAdmin):
+    fieldsets = (
+        (None, {
+             'fields': ('name',)
+        }),
+    )
+    
+class SubjectAdmin (admin.ModelAdmin):
+    fieldsets = (
+        (None, {
+             'fields': ('name',)
+        }),
+    )
+
 # Register your models here.
 admin.site.register(Unity, UnityAdmin)
 admin.site.register(Course, CourseAdmin)
 admin.site.register(Student, StudentAdmin)
 admin.site.register(Klass, KlassAdmin)
 admin.site.register(Lesson, LessonAdmin)
+admin.site.register(FormalSchool, FormalSchoolAdmin)
+admin.site.register(School, SchoolAdmin)
+admin.site.register(Subject, SubjectAdmin)
