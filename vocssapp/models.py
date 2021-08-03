@@ -223,3 +223,46 @@ class Absence (models.Model):
     class Meta:
         verbose_name = _("absence")
         verbose_name_plural = _("absence")
+
+
+class Evaluation (models.Model):
+    student = models.ForeignKey(Student, verbose_name=_("student"), on_delete=models.DO_NOTHING, null=True) 
+    klass = models.ForeignKey(Klass, verbose_name=_("class"), on_delete=models.DO_NOTHING, null=True) 
+    observation =  models.CharField(_("observation"), max_length=300, blank=True, null=True)
+
+    class Meta:
+        verbose_name = _("evaluation")
+        verbose_name_plural = _("evaluations")
+   
+
+class BehaviourEvaluation (models.Model):
+    evaluation = models.ForeignKey(Evaluation, verbose_name=_("evaluation"), on_delete=models.DO_NOTHING, null=True)
+    SCORE = (('0', _('Not rated')), ('1', _('Bad')), ('2', _('Regular')),('3', _('Good')),('4', _('Very Good')),('5', _('Excellent')))
+    
+    date = models.DateField(_("date"), auto_now=False, blank=True, null=True)
+    autonomy = models.CharField(_("Autonomy"), max_length=1, choices=SCORE, blank=True, null=False)
+    organization = models.CharField(_("Organization"), max_length=1, choices=SCORE, blank=True, null=False)
+    assiduity = models.CharField(_("Assiduity"), max_length=1, choices=SCORE, blank=True, null=False)
+    punctuality = models.CharField(_("Punctuality"), max_length=1, choices=SCORE, blank=True, null=False)
+    dedication = models.CharField(_("Dedication"), max_length=1, choices=SCORE, blank=True, null=False)
+    mobile_use = models.CharField(_("Mobile Use"), max_length=1, choices=SCORE, blank=True, null=False)
+    personal_presentation = models.CharField(_("Personal Presentation"), max_length=1, choices=SCORE, blank=True, null=False)
+
+    class Meta:
+        verbose_name = _("Behaviour Evaluation")
+        verbose_name_plural = _("Behaviour Evaluations")
+
+class CognitiveEvaluation (models.Model):
+    evaluation = models.ForeignKey(Evaluation, verbose_name=_("evaluation"), on_delete=models.DO_NOTHING, null=True)
+    SCORE = (('0', _('Not rated')), ('1', _('Bad')), ('2', _('Regular')),('3', _('Good')),('4', _('Very Good')),('5', _('Excellent')))
+    
+    date = models.DateField(_("date"), auto_now=False, blank=True, null=True)
+    problem_solving = models.CharField(_("Problem Solving"), max_length=1, choices=SCORE, blank=True, null=False)
+    oral_expression = models.CharField(_("Oral Expression"), max_length=1, choices=SCORE, blank=True, null=False)
+    traditional_reading = models.CharField(_("Traditional Reading"), max_length=1, choices=SCORE, blank=True, null=False)
+    music_reading = models.CharField(_("Music Reading"), max_length=1, choices=SCORE, blank=True, null=False)
+    course_performance = models.CharField(_("Course Performance"), max_length=1, choices=SCORE, blank=True, null=False)
+
+    class Meta:
+        verbose_name = _("Cognitive Evaluation")
+        verbose_name_plural = _("Cognitive Evaluations")

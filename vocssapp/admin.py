@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Unity, Course, Responsible, Student, Klass, Lesson, StudentAttendance, Grade, FormalSchool, Absence, School, Subject
+from .models import Unity, Course, Responsible, Student, Klass, Lesson, StudentAttendance, Grade, FormalSchool, Absence, School, Subject, Evaluation, BehaviourEvaluation, CognitiveEvaluation
 
 from django.forms import ModelForm
 from django.contrib.auth.models import User
@@ -126,6 +126,36 @@ class SubjectAdmin (admin.ModelAdmin):
         }),
     )
 
+class BehaviourEvaluationInline (admin.TabularInline):
+    fieldsets = (
+        (None, {
+             'fields': ('date', 'autonomy', 'organization', 'assiduity', 'punctuality', 'dedication', 'mobile_use', 'personal_presentation',)
+        }),
+    )
+    model = BehaviourEvaluation
+    extra = 1
+
+class CognitiveEvaluationInline (admin.TabularInline):
+    fieldsets = (
+        (None, {
+             'fields': ('date', 'problem_solving', 'oral_expression', 'traditional_reading', 'music_reading', 'course_performance')
+        }),
+    )
+    model = CognitiveEvaluation
+    extra = 1
+    
+class EvaluationAdmin (admin.ModelAdmin):
+    fieldsets = (
+        (None, {
+             'fields': ('student', 'klass', 'observation',)
+        }),
+    )
+    
+    list_display=('student','klass')
+    inlines = (BehaviourEvaluationInline, CognitiveEvaluationInline)
+
+
+
 # Register your models here.
 admin.site.register(Unity, UnityAdmin)
 admin.site.register(Course, CourseAdmin)
@@ -135,3 +165,4 @@ admin.site.register(Lesson, LessonAdmin)
 admin.site.register(FormalSchool, FormalSchoolAdmin)
 admin.site.register(School, SchoolAdmin)
 admin.site.register(Subject, SubjectAdmin)
+admin.site.register(Evaluation, EvaluationAdmin)
